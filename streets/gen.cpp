@@ -39,6 +39,8 @@ int main(int argc, char** argv){
     int max_c = stoi(argv[4]);
     int seed = stoi(argv[5]);
 
+    vector<set<int>> unique(N);
+
     srand(seed);
 
     for(int i = 0; i < N; i++) {
@@ -53,13 +55,20 @@ int main(int argc, char** argv){
         do{
             k = rand() % N;
         } while(find(k) == find(j));
+        unique[j].insert(k);
+        unique[k].insert(j);
         merge(j, k);
         cout << j << " " << k << " " << min_c + (rand() % (max_c - min_c + 1)) << "\n";
     }
 
     for(int i = 0; i < M - (N - 1); i++) {
-        int j = rand() % N;
-        int k = (j + 1 + rand() % (N - 1)) % N;
+        int j, k;
+        do{
+            j = rand() % N;
+            k = (j + 1 + rand() % (N - 1)) % N;
+        } while(unique[j].count(k));
+        unique[j].insert(k);
+        unique[k].insert(j);
         cout << j << " " << k << " " << min_c + (rand() % (max_c - min_c + 1)) << "\n";
     }
 

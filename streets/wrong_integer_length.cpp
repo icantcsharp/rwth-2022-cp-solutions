@@ -53,7 +53,7 @@ int main(){
         }
     }
 
-    long long total = 0;
+    int total = 0;
     vector<int> chosen;
     while(!pq.empty()){
         int v, d, i;

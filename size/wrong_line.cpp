@@ -59,7 +59,7 @@ int main(){
     deque<int> hull = {0};
 
     for(int c: cand){
-        while(hull.size() >= 2 && ccw(points[hull[hull.size() - 2]], points[hull.back()], points[c]) < 0) {
+        while(hull.size() >= 2 && ccw(points[hull[hull.size() - 2]], points[hull.back()], points[c]) <= 0) {
             hull.pop_back();
         }
         hull.push_back(c);

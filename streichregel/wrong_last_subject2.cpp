@@ -24,16 +24,13 @@ int main(){
         if(C >= grades[i].second){
             C -= grades[i].second;
             grades[i].second = 0;
-        } else if(C > 0){
-            grades[i].second -= C;
-            C = 0;
         }
 
         sum_grades += grades[i].first * grades[i].second;
         sum_credits += grades[i].second;
     }
 
-    cout << setprecision(10) << fixed << sum_grades / sum_credits - .005 << "\n";
+    cout << setprecision(2) << fixed << sum_grades / sum_credits - .005 << "\n";
 
     return 0;
 }

@@ -49,9 +49,8 @@ int main(){
 
     sort(cand.begin(), cand.end(), [&](int a, int b){
         int d = ccw(points[0], points[a], points[b]);
-        if(d > 0) return true;
+        if(d >= 0) return true;
         if(d < 0) return false;
-        return norm(a) > norm(b);
     });
 
     cand.push_back(0);

@@ -10,6 +10,7 @@ int N, M;
 
 unordered_map<string, int> place2int;
 int dist[maxn];
+vector<pair<string, string>> edges;
 
 vector<tiii> adj[maxn];
 
@@ -36,6 +37,8 @@ int main(){
 
         adj[a2].push_back({c, b2, i});
         adj[b2].push_back({c, a2, i});
+
+        edges.push_back({a, b});
     }
 
     priority_queue<tiii, vector<tiii>, greater<tiii>> pq;
@@ -59,6 +62,7 @@ int main(){
         pq.pop();
 
         if(d > dist[v]) continue;
+        total += dist[v];
         dist[v] = 0;
 
         chosen.push_back(i);
@@ -72,7 +76,8 @@ int main(){
     }
 
     cout << chosen.size() << "\n";
-    for(int x: chosen) cout << x << " ";
+    cout << total << "\n";
+    for(int x: chosen) cout << edges[x].first << " "  << edges[x].second << "\n";
     cout << "\n";
 
     return 0;

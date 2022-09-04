@@ -21,19 +21,16 @@ int main(){
     long long sum_credits = 0;
 
     for(int i = 0; i < N; i++){
-        if(C >= grades[i].second){
+        if(C >= 0){
             C -= grades[i].second;
             grades[i].second = 0;
-        } else if(C > 0){
-            grades[i].second -= C;
-            C = 0;
         }
 
         sum_grades += grades[i].first * grades[i].second;
         sum_credits += grades[i].second;
     }
 
-    cout << setprecision(10) << fixed << sum_grades / sum_credits - .005 << "\n";
+    cout << setprecision(2) << fixed << sum_grades / sum_credits - .005 << "\n";
 
     return 0;
 }

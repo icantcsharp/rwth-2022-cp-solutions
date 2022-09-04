@@ -19,7 +19,7 @@ int main(){
     for(int i = 0; i < N; i++){
         cin >> p[i];
         s += p[i];
-        for(int j = sum_p / 2; j >= p[i]; j--){
+        for(int j = p[i]; j <= sum_p / 2; j++){
             if(poss[j]) continue;
             if(poss[j - p[i]]) {
                 poss[j] = 1;

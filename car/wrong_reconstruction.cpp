@@ -6,7 +6,7 @@ const int maxn = 1e3;
 
 unordered_map<string, int> place2int;
 
-int N, poss[sum_p / 2 + 1], last[sum_p / 2 + 1], p[maxn], res[maxn];
+int N, poss[sum_p / 2 + 1], p[maxn], res[maxn];
 
 int main(){
     ios_base::sync_with_stdio(false);
@@ -20,19 +20,22 @@ int main(){
         cin >> p[i];
         s += p[i];
         for(int j = sum_p / 2; j >= p[i]; j--){
-            if(poss[j]) continue;
-            if(poss[j - p[i]]) {
-                poss[j] = 1;
-                last[j] = i;
-            }
+            poss[j] |= poss[j - p[i]];
         }
     }
 
-
     int curr = s / 2;
     while(curr != 0){
-        res[last[curr]] = 1;
-        curr -= p[last[curr]];
+        int j = -1;
+        for(int k = 0; k < N; k++){
+            if(!res[k] && curr >= p[k] && poss[curr - p[k]]){
+                j = k;
+                break;
+            }
+        }
+        if(j == -1) break;
+        res[j] = 1;
+        curr -= p[j];
     }
 
     for(int i = 0; i < N; i++) cout << (res[i] ? "YES" : "NO") << "\n";

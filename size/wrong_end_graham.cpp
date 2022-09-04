@@ -54,8 +54,6 @@ int main(){
         return norm(a) > norm(b);
     });
 
-    cand.push_back(0);
-
     deque<int> hull = {0};
 
     for(int c: cand){
@@ -64,6 +62,7 @@ int main(){
         }
         hull.push_back(c);
     }
+    hull.push_back(0);
 
     ld sz = 0;
     ld len = 0;

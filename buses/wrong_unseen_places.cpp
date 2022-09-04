@@ -47,8 +47,8 @@ int main(){
     for(int i = 0; i < Q; i++){
         string a, b;
         cin >> a >> b;
-        if(!place2int.count(a)) place2int[a] = cnt++;
-        if(!place2int.count(b)) place2int[b] = cnt++;
+        if(!place2int.count(a)) place2int[a] = N + 1;
+        if(!place2int.count(b)) place2int[b] = N + 1;
 
         cout << (comp[place2int[a]] == comp[place2int[b]] ? "YES" : "NO") << "\n";
     }

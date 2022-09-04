@@ -40,10 +40,6 @@ int main(){
 
     for(int i = 0; i < N; i++) cin >> points[i].fi >> points[i].se;
 
-    int m = min_element(points, points + N) - points;
-
-    swap(points[m], points[0]);
-
     vector<int> cand;
     for(int i = 1; i < N; i++) cand.push_back(i);
 

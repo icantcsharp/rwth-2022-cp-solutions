@@ -34,7 +34,6 @@ int main(){
         int b2 = place2int[b];
 
         adj[a2].push_back(b2);
-        adj[b2].push_back(a2);
     }
 
     for(int i = 0; i < N; i++){
